@@ -3,6 +3,9 @@
 
 #include <string>
 
+// Function to get user input and return the preprocessed text
+std::string getUserInputAndPreprocess();
+
 class IO {
 public:
     IO();
