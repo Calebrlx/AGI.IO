@@ -1,5 +1,9 @@
 #include "io.h"
 #include <iostream>
+#include <fst/fstlib.h>
+#include <string>
+#include <sstream>
+#include <cctype>
 
 IO::IO() {
     // Constructor implementation (if needed)
@@ -10,15 +14,16 @@ IO::~IO() {
 }
 
 std::string IO::promptInput() {
-    std::cout << "Type something: ";
-    std::string userInput;
-    std::getline(std::cin, userInput);
-    return userInput;
+  std::cout << "Type something: ";
+  std::string userInput;
+  std::getline(std::cin, userInput);
+
+  // Create TextPreprocessor object
+  TextPreprocessor preprocessor;
+
+  // Preprocess the user input
+  return preprocessor.preprocess(userInput);
 }
-#include <fst/fstlib.h>
-#include <string>
-#include <sstream>
-#include <cctype>
 
 class TextPreprocessor {
 public:
@@ -82,12 +87,3 @@ private:
     fst_.SetFinal(space_state, 0);
   }
 };
-
-// Example usage
-int main() {
-  TextPreprocessor preprocessor;
-  std::string input_text = "OpenFst is Great!";
-  std::string processed_text = preprocessor.preprocess(input_text);
-  std::cout << "Processed text: " << processed_text << std::endl; // Output: "openfst is great"
-  return 0;
-}
