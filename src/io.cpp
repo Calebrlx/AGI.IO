@@ -1,4 +1,4 @@
-#include "io.h"
+#include "../header/io.h"
 #include <iostream>
 #include <fst/fstlib.h>
 #include <string>
