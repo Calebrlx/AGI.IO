@@ -32,7 +32,16 @@ The architecture consists of several key components, each serving a specific rol
 
 The project is primarily implemented in C++ with potential Python components for deep learning. The codebase is organized into separate `.cpp` and `.h` files for each component, creating a clean separation of concerns.
 
-  
+
+- Logic
+
+1. Initialization**: `main.cpp` initializes all components.
+2. User Interaction**: `io.cpp` receives user input and passes it to `cacheManager.cpp`.
+3. Processing**: `cacheManager.cpp` sends input to `nlp.cpp` for processing. If required, complex logic is delegated to Python scripts.
+4. Storage**: Processed data may be stored in `dataStore.cpp` through `cacheManager.cpp`.
+5. Response**: Final processed output is sent back to the user through `io.cpp`.
+
+
 - Directory Structure
 
 project_root/
@@ -49,10 +58,36 @@ project_root/
 |   |-- nlp.h
 |-- README.txt
 
-- Logic
 
-1. Initialization**: `main.cpp` initializes all components.
-2. User Interaction**: `io.cpp` receives user input and passes it to `cacheManager.cpp`.
-3. Processing**: `cacheManager.cpp` sends input to `nlp.cpp` for processing. If required, complex logic is delegated to Python scripts.
-4. Storage**: Processed data may be stored in `dataStore.cpp` through `cacheManager.cpp`.
-5. Response**: Final processed output is sent back to the user through `io.cpp`.
+
+`src/io.cpp` & `headers/io.h`
+Class: `IO`
+- Methods:
+  - `std::string promptInput()`: Prompts the user to type something and returns the user's input as a string.
+
+`src/dataStore.cpp` & `headers/dataStore.h`
+Class: `DataStore`
+- Methods:
+  - `void storeData(const std::string &data)`: Handles long-term data storage.
+  - `std::string retrieveData(const std::string &key)`: Retrieves data based on a specific key or identifier.
+
+`src/cacheManager.cpp` & `headers/cacheManager.h`
+Class: `CacheManager`
+- Methods:
+  - `CacheManager(DataStore* dataStore, NLP* nlp)`: Constructor that takes pointers to DataStore and NLP.
+  - `std::string processInput(const std::string &input)`: Processes input and communicates between IO, DataStore, and NLP.
+  - `void updateCache(const std::string &key, const std::string &value)`: Updates recent memory or cache.
+  - `std::string retrieveFromCache(const std::string &key)`: Retrieves data from the cache.
+
+`src/nlp.cpp` & `headers/nlp.h`
+Class: `NLP`
+- Methods:
+  - `std::string processInput(const std::string &input)`: Performs basic NLP on the input. If the input is complex, it may delegate to advanced AI models like ChatGPT-4.
+
+`src/main.cpp`
+Main Program File**:
+- Includes: Integration and initialization of all classes and handling the main loop of the program.
+- Main Function:
+  - Instantiates objects for IO, DataStore, CacheManager, and NLP.
+  - Coordinates interactions between these objects.
+  - Manages the overall flow of the program, including user interactions and responses.
