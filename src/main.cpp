@@ -1,5 +1,6 @@
 #include "../headers/Preprocessor.h"
 #include <iostream>
+#include <string>
 
 int main() {
   Preprocessor preprocessor;
@@ -15,8 +16,19 @@ int main() {
   std::vector<std::string> stemmedTokens = preprocessor.stem(noStopwordsTokens);
   std::vector<std::string> lemmatizedTokens = preprocessor.lemmatize(stemmedTokens);
 
-  // Print processed text (you may want to concatenate the lemmatizedTokens into a single string)
-  std::cout << "Processed text: " << noPunctuationText << std::endl;
+  // Print tokenized text
+  std::cout << "Tokenized text: ";
+  for (const std::string& token : tokens) {
+    std::cout << token << " ";
+  }
+  std::cout << std::endl;
+
+  // Print processed text (concatenate the lemmatizedTokens into a single string)
+  std::string processedText = "";
+  for (const std::string& token : lemmatizedTokens) {
+    processedText += token + " ";
+  }
+  std::cout << "Processed text: " << processedText << std::endl;
 
   return 0;
 }
