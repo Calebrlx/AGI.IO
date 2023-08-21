@@ -4,12 +4,13 @@
 #include <string>
 
 // Function to get user input and return the preprocessed text
-std::string getUserInputAndPreprocess();
+
 
 class IO {
 public:
     IO();
     ~IO();
+    std::string getUserInputAndPreprocess();
     std::string promptInput();
 };
 
