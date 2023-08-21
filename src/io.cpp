@@ -5,26 +5,6 @@
 #include <sstream>
 #include <cctype>
 
-IO::IO() {
-    // Constructor implementation (if needed)
-}
-
-IO::~IO() {
-    // Destructor implementation (if needed)
-}
-
-std::string IO::promptInput() {
-  std::cout << "Type something: ";
-  std::string userInput;
-  std::getline(std::cin, userInput);
-
-  // Create TextPreprocessor object
-  TextPreprocessor preprocessor;
-
-  // Preprocess the user input
-  return preprocessor.preprocess(userInput);
-}
-
 class TextPreprocessor {
 public:
   // Constructor
@@ -86,4 +66,24 @@ private:
     fst_.AddArc(current_state, fst::StdArc(' ', ' ', 0, space_state));
     fst_.SetFinal(space_state, 0);
   }
-};
+
+
+IO::IO() {
+    // Constructor implementation (if needed)
+}
+
+IO::~IO() {
+    // Destructor implementation (if needed)
+}
+
+std::string IO::promptInput() {
+  std::cout << "Type something: ";
+  std::string userInput;
+  std::getline(std::cin, userInput);
+
+  // Create TextPreprocessor object
+  TextPreprocessor preprocessor;
+
+  // Preprocess the user input
+  return preprocessor.preprocess(userInput);
+}
