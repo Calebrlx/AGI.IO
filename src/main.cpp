@@ -2,8 +2,8 @@
 #include <iostream>
 
 int main() {
-  IO io; // Create an instance of the IO class
-  std::string processed_text = io.getUserInputAndPreprocess(); // Call the function through the instance
+  IO io;
+  std::string processed_text = io.promptInput();
   std::cout << "Processed text: " << processed_text << std::endl;
   return 0;
 }
