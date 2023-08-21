@@ -6,7 +6,7 @@ project(Seri)
 include_directories(/usr/local/include)
 
 # Add the source files
-set(SOURCE_FILES main.cpp io.cpp io.h)
+set(SOURCE_FILES main.cpp src/io.cpp src/io.h)
 
 # Create the executable
 add_executable(Seri ${SOURCE_FILES})
