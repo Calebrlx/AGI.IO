@@ -1,12 +1,22 @@
 #include "io.h"
+#include "dataStore.h"
 #include <iostream>
 
 int main() {
-    IO io; // Creating an instance of the IO class
-    std::string userInput = io.promptInput(); // Calling the promptInput method
-    std::cout << "You typed: " << userInput << std::endl; // Printing the user input
+    IO io;
+    DataStore dataStore;
+    
+    std::string userInput = io.promptInput();
+    dataStore.addData(userInput);
 
-    // Additional code can go here to process the user input or continue the program's functionality
+    std::cout << "You typed: " << userInput << std::endl;
 
-    return 0; // Return statement to indicate successful execution
+    // Retrieving and printing all stored data
+    std::vector<std::string> allData = dataStore.getAllData();
+    std::cout << "All data in store:\n";
+    for (const std::string &data : allData) {
+        std::cout << data << std::endl;
+    }
+
+    return 0;
 }
