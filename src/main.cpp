@@ -9,9 +9,9 @@ int main() {
   std::getline(std::cin, userInput);
 
   // Apply preprocessing steps
-  std::vector<std::string> tokens = preprocessor.tokenize(userInput);
   std::string lowercaseText = preprocessor.toLowerCase(userInput);
   std::string noPunctuationText = preprocessor.removePunctuation(lowercaseText);
+  std::vector<std::string> tokens = preprocessor.tokenize(noPunctuationText);
   std::vector<std::string> noStopwordsTokens = preprocessor.removeStopwords(tokens);
   std::vector<std::string> stemmedTokens = preprocessor.stem(noStopwordsTokens);
   std::vector<std::string> lemmatizedTokens = preprocessor.lemmatize(stemmedTokens);
