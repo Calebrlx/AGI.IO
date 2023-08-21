@@ -1,13 +1,8 @@
-#include "io.h"
-#include "dataStore.h"
+#include "../headers/io.h"
 #include <iostream>
 
 int main() {
-    IO io;
-    DataStore dataStore;
-    
     std::string userInput = io.promptInput();
-    dataStore.addData(userInput);
 
     std::cout << "You typed: " << userInput << std::endl;
 
