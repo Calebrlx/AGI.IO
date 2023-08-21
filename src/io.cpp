@@ -66,7 +66,7 @@ private:
     fst_.AddArc(current_state, fst::StdArc(' ', ' ', 0, space_state));
     fst_.SetFinal(space_state, 0);
   }
-
+}
 
 IO::IO() {
     // Constructor implementation (if needed)
