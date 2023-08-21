@@ -1,7 +1,5 @@
 #include "../headers/io.h"
 #include <iostream>
-#include <fst/fstlib.h>
-#include <string>
 #include <sstream>
 #include <cctype>
 
@@ -66,7 +64,7 @@ private:
     fst_.AddArc(current_state, fst::StdArc(' ', ' ', 0, space_state));
     fst_.SetFinal(space_state, 0);
   }
-}
+} // Removed the unnecessary brace here
 
 IO::IO() {
     // Constructor implementation (if needed)
