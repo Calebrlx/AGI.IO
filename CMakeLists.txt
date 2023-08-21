@@ -7,6 +7,7 @@ include_directories(/usr/local/include)
 
 # Add the source files
 set(SOURCE_FILES src/main.cpp src/io.cpp headers/io.h)
+set(CMAKE_CXX_STANDARD 17)
 
 # Create the executable
 add_executable(Seri ${SOURCE_FILES})
